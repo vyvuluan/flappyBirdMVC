@@ -8,7 +8,7 @@ public class RedBird : Bird
     private IEnumerator dash()
     {
         base.setSpeed.Invoke(8f);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         base.gravitationalForce = 9.8f;
         base.setSpeed.Invoke(3f);
         StartCoroutine(Countdown());
@@ -32,9 +32,18 @@ public class RedBird : Bird
     {
         if (!isCountDown)
         {
+            base.imageCountDownSkillBlack.Invoke();
             base.checkSkill = true;
             base.gravitationalForce = 0;
             StartCoroutine(dash());
         }
+    }
+    private void Update()
+    {
+        if (isCountDown)
+        {
+            base.imageCountDownSkill.Invoke();
+        }
+
     }
 }

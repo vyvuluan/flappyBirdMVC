@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
         pipeSpawner.Initialized(model.speed, model.pipePoolSize, model.pipeSpacing);
         bulletSpawner.Initialized(model.poolBulletSize, model.bulletSpeed);
         bird.Initialized(model.gravitationalForce, model.bounceForce, view.SetTextScore, audioGame.AudioDie, 
-            audioGame.AudioFly, audioGame.AudioPoint, view.EnableGameOverPanel, bulletSpawner.getBullet, pipeSpawner.ChangeSpeedPipes, view.CountDownSkill);
+            audioGame.AudioFly, audioGame.AudioPoint, view.EnableGameOverPanel, bulletSpawner.getBullet, pipeSpawner.ChangeSpeedPipes, view.CountDownSkill, view.ImageCountDownSkillBlack, view.ImageCountDownSkill);
 
     }
     // Update is called once per frame

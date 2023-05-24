@@ -20,6 +20,7 @@ public class BlueBird : Bird
         while (countdownTime > 0)
         {
             base.countDownSkill.Invoke(countdownTime.ToString());
+            
             yield return new WaitForSeconds(1.0f);
             countdownTime--;
 
@@ -28,11 +29,20 @@ public class BlueBird : Bird
         isCountDown = false;
         base.countDownSkill.Invoke(string.Empty);
     }
+    private void Update()
+    {
+        if(isCountDown)
+        {
+            base.imageCountDownSkill.Invoke();
+        }
+        
+    }
 
     public override void Skill()
     {
         if (!isCountDown)
         {
+            base.imageCountDownSkillBlack.Invoke();
             StartCoroutine(slowPipe());
         }
     }

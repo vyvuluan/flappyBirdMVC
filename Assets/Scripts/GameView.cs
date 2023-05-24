@@ -11,7 +11,8 @@ public class GameView : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private Image medalGold, medalSilver, medalBronze;
     [SerializeField] private Text timeCountDownStartText;
-    [SerializeField] private TMPro.TextMeshProUGUI countDownText;
+    [SerializeField] private Text countDownText;
+    [SerializeField] private Image imageSkill;
     private const string highScore = "high score";
     private void Awake()
     {
@@ -48,7 +49,6 @@ public class GameView : MonoBehaviour
             medalBronze.gameObject.SetActive(true);
         }
         scorePanel.text = score.ToString();
-        Debug.Log(PlayerPrefs.GetInt(highScore));
         int highScoreTemp = PlayerPrefs.GetInt(highScore);
         if (score > highScoreTemp)
         {
@@ -83,6 +83,14 @@ public class GameView : MonoBehaviour
     public void CountDownSkill(string time)
     {
         countDownText.text = time;
+    }
+    public void ImageCountDownSkillBlack()
+    {
+        imageSkill.fillAmount = 0;
+    }
+    public void ImageCountDownSkill()
+    {
+        imageSkill.fillAmount += 0.2f * Time.deltaTime;
     }
 
 }

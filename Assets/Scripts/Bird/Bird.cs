@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +21,10 @@ public abstract class Bird : MonoBehaviour
     protected Action<float> setSpeed;
     protected Action getBullet;
     protected Action<string> countDownSkill;
+    protected Action imageCountDownSkillBlack;
+    protected Action imageCountDownSkill;
     public void Initialized(float gravitationalForce, float bounceForce, Action<int> setTextScore, Action playAudioDie, Action playAudioFly, 
-        Action playAudioPoint, Action<int> enableGameOverPanel, Action getBullet, Action<float> setSpeed, Action<string> countDownSkill)
+        Action playAudioPoint, Action<int> enableGameOverPanel, Action getBullet, Action<float> setSpeed, Action<string> countDownSkill, Action imageCountDownSkillBlack, Action imageCountDownSkill)
     {
         this.gravitationalForce = gravitationalForce;
         this.bounceForce = bounceForce;
@@ -34,6 +36,8 @@ public abstract class Bird : MonoBehaviour
         this.getBullet = getBullet;
         this.setSpeed = setSpeed;
         this.countDownSkill = countDownSkill;
+        this.imageCountDownSkillBlack = imageCountDownSkillBlack;
+        this.imageCountDownSkill = imageCountDownSkill;
     }
     private void Awake()
     {
@@ -118,12 +122,9 @@ public abstract class Bird : MonoBehaviour
                 score++;
                 playAudioPoint.Invoke();
                 setTextScore.Invoke(score);
+                checkSkill = false;
                 return true;
             }
-        }
-        if (pipe.transform.position.x > transform.position.x)
-        {
-            checkSkill = false;
         }
         return false;
     }    
