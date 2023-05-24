@@ -18,8 +18,10 @@ public class GameConfig : MonoBehaviour
     [Space(8.0f)]
     [Tooltip("Tốc độ của cống")]
     public float speed = 3;
-    [Tooltip("số lượng cống trong pool")]
+    [Tooltip("Số lượng cống")]
     public int pipePoolSize = 2;
+    [Tooltip("Khoảng cách giữa các cống")]
+    public float pipeSpacing = 4f;
     #endregion
 
     #region BULLET
